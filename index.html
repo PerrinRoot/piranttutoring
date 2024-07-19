@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pirant - Tutoring Website</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Tutoring, Math Tutoring, Science Tutoring, Computer Science Tutoring, High School Tutoring, Online Tutoring, Academic Support, Algebra, Geometry, Calculus, Physics, Chemistry, Biology, SAT Prep, ACT Prep" name="keywords">
+    <meta content="Pirant offers high-quality tutoring services for high school students in subjects such as Math, Science, and Computer Science. Our expert tutors provide personalized academic support to help students excel in their studies and achieve their academic goals." name="description">
+
+
+    <!-- Favicon -->
+    <link id="favicon-light" href="img/white pirant logo.png" rel="icon" type="image/png" disabled>
+    <link id="favicon-dark" href="img/pirant_logo-removebg-preview.png" rel="icon" type="image/png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FullCalendar CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="particles-js" class="position-fixed w-100 vh-100 top-0 start-0" style="z-index: -1;"></div>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar & Carousel Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+            <a href="index.html" class="navbar-brand p-0 d-flex align-items-center">
+                <img src="img/white pirant logo.png" alt="Pirant Logo" style="height: 40px; margin-right: 10px;">
+                <h1 class="m-0">Pirant</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="service.html" class="nav-item nav-link">Services</a>
+                    <a href="price.html" class="nav-item nav-link">Pricing</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Subjects</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="math.html" class="dropdown-item">Math</a>
+                            <a href="science.html" class="dropdown-item">Science</a>
+                            <a href="computer.html" class="dropdown-item">Computer Science</a>
+                            <a href="history.html" class="dropdown-item">History</a>
+                            <a href="testing.html" class="dropdown-item">SAT/ACT</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link" style="margin-right: 1.5rem;">Contact</a>
+                </div>
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" target="_blank" href="https://github.com/PerrinRoot/pirant"><i class="fab fa-github fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square me-2" target="_blank" href="https://www.youtube.com/@pirantTutoring"><i class="fab fa-youtube fw-normal"></i></a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="w-100" style="position: relative; height: 100vh;">
+                        <div style="background: linear-gradient(135deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); opacity: 0.7; position: absolute; width: 100%; height: 100%; z-index: 0;"></div>
+                        <canvas id="fractal-canvas" style="position: absolute; width: 100%; height: 100%; z-index: 1;"></canvas>
+                    </div>
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <img class="animated zoomIn" src="img/white pirant logo.png" alt="Pirant Logo" style="height: 100px;">
+                            <h1 class="test display-1 text-white mb-md-4 animated zoomIn">Tutoring for <span class="special">Students</span>, by <span class="special">Students</span></h1>
+                            <a href="contact.html" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inline JavaScript for fractal animation -->
+                <script>
+                    const canvas = document.getElementById('fractal-canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+
+                    let fractals = [];
+
+                    function Fractal(x, y, size) {
+                        this.x = x;
+                        this.y = y;
+                        this.size = size;
+                        this.angle = 0;
+                        this.speed = Math.random() * 0.02 + 0.01;
+                    }
+
+                    Fractal.prototype.update = function () {
+                        this.angle += this.speed;
+                        this.x += Math.cos(this.angle) * 0.5;
+                        this.y += Math.sin(this.angle) * 0.5;
+                        if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
+                            this.x = Math.random() * canvas.width;
+                            this.y = Math.random() * canvas.height;
+                        }
+                    }
+
+                    Fractal.prototype.draw = function () {
+                        ctx.save();
+                        ctx.translate(this.x, this.y);
+                        ctx.rotate(this.angle);
+                        ctx.beginPath();
+                        for (let i = 0; i < 5; i++) {
+                            ctx.lineTo(this.size * Math.cos((i * 2 * Math.PI) / 5), this.size * Math.sin((i * 2 * Math.PI) / 5));
+                        }
+                        ctx.closePath();
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+
+                    function initFractals() {
+                        fractals = [];
+                        for (let i = 0; i < 200; i++) {
+                            let size = Math.random() * 20 + 10;
+                            let x = Math.random() * canvas.width;
+                            let y = Math.random() * canvas.height;
+                            fractals.push(new Fractal(x, y, size));
+                        }
+                    }
+
+                    function animate() {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        fractals.forEach(fractal => {
+                            fractal.update();
+                            fractal.draw();
+                        });
+                        requestAnimationFrame(animate);
+                    }
+
+                    initFractals();
+                    animate();
+
+                    window.addEventListener('resize', () => {
+                        canvas.width = window.innerWidth;
+                        canvas.height = window.innerHeight;
+                        initFractals();
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar & Carousel End -->
+
+    <!-- Include the LottieFiles player script -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<!-- About Start -->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="section-title position-relative pb-3 mb-nine">
+                    <h5 class="fw-bold text-purple text-uppercase">About Us</h5>
+                    <h1 class="mb-0">Providing Top-Quality Tutoring</h1>
+                </div>
+                <p class="mb-4">Our tutors are hand selected from the top of their classes and specialized fields, ensuring you receive the highest quality assistance.</p>
+                <p class="mb-4">We are dedicated to making tutoring accessible for everyone. Our mission is to provide affordable, top-tier tutoring services to help you excel in your studies and achieve your academic goals.</p>
+                <ul class="list-unstyled custom-bullets mb-4">
+                    <li class="mb-3">
+                        <h5 class="mb-0">Free Online Resources/Videos</h5>
+                    </li>
+                    <li class="mb-3">
+                        <h5 class="mb-0">Affordable Hourly Prices</h5>
+                    </li>
+                    <li class="mb-3">
+                        <h5 class="mb-0">Personalized Tutoring Plans</h5>
+                    </li>
+                    <li class="mb-3">
+                        <h5 class="mb-0">Expert Tutors in Every Subject</h5>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
+                    <div class="bg-purple d-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px;">
+                        <i class="fa fa-envelope text-white"></i>
+                    </div>
+                    <div class="ps-4">
+                        <h5 class="mb-2">Have Questions? Email Us</h5>
+                        <h4 class="text-purple mb-0">tutoring@pirant.org</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <lottie-player src="animations/Animation - 1719633257383.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+    <!-- Service Start -->
+    <div class="container-fluid py-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title position-relative pb-3 mb-nine" style="max-width: 600px;">
+                <h5 class="fw-bold text-purple text-uppercase">Our Services</h1>
+                <h1 class="mb-0">Some Featured Subjects</h1>
+            </div>
+
+            <div class="subject-section">
+                <h2 class="subject-title text-purple top">Math</h2>
+                <div class="subject-grid">
+                    <div class="service-item" onclick="window.location.href='math.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-square-root-alt text-purple"></i> <!-- Algebra 1 Icon -->
+                        </div>
+                        <h4 class="mb-3">Algebra 1</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='math.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass text-purple"></i> <!-- Geometry Icon -->
+                        </div>
+                        <h4 class="mb-3">Geometry</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='math.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-superscript text-purple"></i> <!-- Algebra 2 Icon -->
+                        </div>
+                        <h4 class="mb-3">Algebra 2</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='math.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-angle-double-right text-purple"></i> <!-- Pre-Calculus & Trigonometry Icon -->
+                        </div>
+                        <h4 class="mb-3">Pre-Calculus & Trigonometry</h4>
+                    </div>
+                </div>
+                <div class="subject-grid mt-5">
+                    <div class="service-item" onclick="window.location.href='math.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-infinity text-purple"></i> <!-- Calculus Icon -->
+                        </div>
+                        <h4 class="mb-3">Calculus (1 & 2)</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='testing.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-book-open text-purple"></i> <!-- SAT Math Icon -->
+                        </div>
+                        <h4 class="mb-3">SAT Math</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='testing.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-list text-purple"></i> <!-- ACT Math Icon -->
+                        </div>
+                        <h4 class="mb-3">ACT Math</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='math.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line text-purple"></i> <!-- Statistics Icon -->
+                        </div>
+                        <h4 class="mb-3">Statistics</h4>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-5">
+
+            <div class="subject-section">
+                <h2 class="subject-title text-purple">Science</h2>
+                <div class="subject-grid">
+                    <div class="service-item" onclick="window.location.href='science.html'">
+                        <div class="service-icon">
+                            <i class="fa fa-flask text-purple"></i>
+                        </div>
+                        <h4 class="mb-3">Biology</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='science.html'">
+                        <div class="service-icon">
+                            <i class="fa fa-atom text-purple"></i>
+                        </div>
+                        <h4 class="mb-3">Chemistry</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='science.html'">
+                        <div class="service-icon">
+                            <i class="fa fa-microscope text-purple"></i>
+                        </div>
+                        <h4 class="mb-3">Physics</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='science.html'">
+                        <div class="service-icon">
+                            <i class="fa fa-leaf text-purple"></i>
+                        </div>
+                        <h4 class="mb-3">Environmental Science</h4>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-5">
+
+            <div class="subject-section">
+                <h2 class="subject-title text-purple">Computer Science</h2>
+                <div class="subject-grid">
+                    <div class="service-item" onclick="window.location.href='computer.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code text-purple"></i> <!-- Introduction to Java (Visual) Icon -->
+                        </div>
+                        <h4 class="mb-3">Introduction to Java (Visual)</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='computer.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-code text-purple"></i> <!-- Introduction to Python Icon -->
+                        </div>
+                        <h4 class="mb-3">Introduction to Python</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='computer.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs text-purple"></i> <!-- Computer Science Principles Icon -->
+                        </div>
+                        <h4 class="mb-3">Computer Science Principles</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='computer.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop text-purple"></i> <!-- Computer Science A Icon -->
+                        </div>
+                        <h4 class="mb-3">Computer Science A</h4>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-5">
+
+            <div class="subject-section">
+                <h2 class="subject-title text-purple">History</h2>
+                <div class="subject-grid">
+                    <div class="service-item" onclick="window.location.href='history.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-landmark text-purple"></i> <!-- U.S. History Icon -->
+                        </div>
+                        <h4 class="mb-3">U.S. History</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='history.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-gavel text-purple"></i> <!-- U.S. Government Icon -->
+                        </div>
+                        <h4 class="mb-3">U.S. Government</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='history.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-globe text-purple"></i> <!-- World History Icon -->
+                        </div>
+                        <h4 class="mb-3">World History</h4>
+                    </div>
+                    <div class="service-item" onclick="window.location.href='history.html'">
+                        <div class="service-icon">
+                            <i class="fas fa-archway text-purple"></i> <!-- European History Icon -->
+                        </div>
+                        <h4 class="mb-3">European History</h4>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5">
+        </div>
+    </div>
+    <!-- Service End -->
+
+    <!-- Pricing Plan Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title position-relative pb-3 mb-5" style="max-width: 600px;">
+                <h5 class="fw-bold text-lighter-purple text-uppercase">Pricing Plans</h5>
+                <h1 class="mb-0">Competitive Hourly Rates</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
+                    <div class="card bg-light rounded shadow-sm">
+                        <div class="card-header text-center py-4 bg-lighter-purple text-white">
+                            <h4 class="mb-1" style="color: #d3d3d3; font-size: 1.5rem;">Starter Plan</h4>
+                            <h2 class="display-5 mb-0" style="color: #d3d3d3; font-size: 2.5rem; text-shadow: 1px 1px 2px #000;">1 hr</h2>
+                        </div>
+                        <div class="card-body text-center py-4">
+                            <p class="mb-3" style="font-size: 1.1rem;">Perfect for a quick review or help with a single topic.</p>
+                            <h2 class="text-lighter-purple mb-0" style="font-size: 2rem;">$30.00</h2>
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="card bg-white rounded shadow-sm">
+                        <div class="card-header text-center py-4 bg-lighter-purple text-white">
+                            <h4 class="mb-1" style="color: #d3d3d3; font-size: 1.5rem;">Standard Plan</h4>
+                            <h2 class="display-5 mb-0" style="color: #d3d3d3; font-size: 2.5rem; text-shadow: 1px 1px 2px #000;">6 hrs</h2>
+                        </div>
+                        <div class="card-body text-center py-4">
+                            <p class="mb-3" style="font-size: 1.1rem;">Ideal for students needing regular support across a few subjects.</p>
+                            <h2 class="text-lighter-purple mb-0" style="font-size: 2rem;">$170.00</h2>
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
+                    <div class="card bg-light rounded shadow-sm">
+                        <div class="card-header text-center py-4 bg-lighter-purple text-white">
+                            <h4 class="mb-1" style="color: #d3d3d3; font-size: 1.5rem;">Advanced Plan</h4>
+                            <h2 class="display-5 mb-0" style="color: #d3d3d3; font-size: 2.5rem; text-shadow: 1px 1px 2px #000;">13 hrs</h2>
+                        </div>
+                        <div class="card-body text-center py-4">
+                            <p class="mb-3" style="font-size: 1.1rem;">Best for students needing comprehensive support in multiple subjects.</p>
+                            <h2 class="text-lighter-purple mb-0" style="font-size: 2rem;">$360.00</h2>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pricing Plan End -->
+
+    <!-- Booking Section Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title position-relative pb-3 mb-5" style="max-width: 600px;">
+                <h5 class="fw-bold text-lighter-purple text-uppercase">Book a Tutoring Session</h5>
+                <h1 class="mb-0">Select a Date to Book Your Session</h1>
+            </div>
+            <div id="booking-calendar" class="mb-5"></div>
+            <form id="booking-form" action="https://formspree.io/f/mvgpoybn" method="POST" style="display: none;">
+                <div class="mb-3">
+                    <label for="name" class="form-label text-purple" style="margin-top: 1rem;">Name</label>
+                    <input type="text" class="form-control text-purple" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label text-purple">Email</label>
+                    <input type="email" class="form-control text-purple" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label text-purple">Subject</label>
+                    <input type="text" class="form-control text-purple" id="subject" name="subject" placeholder="Enter the subject" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tutorPreference" class="form-label text-purple">Tutor Preference</label>
+                    <input type="text" class="form-control text-purple" id="tutorPreference" name="tutorPreference" placeholder="Enter tutor preference (if any)">
+                </div>
+                <div class="mb-3">
+                    <label for="grade" class="form-label text-purple">Grade</label>
+                    <input type="text" class="form-control text-purple" id="grade" name="grade" placeholder="Enter your grade" required>
+                </div>
+                <div class="mb-3">
+                    <label for="hours" class="form-label text-purple">Hours</label>
+                    <input type="text" class="form-control text-purple" id="hours" name="hours" placeholder="Enter the number of hours" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Session Type</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input text-purple" type="radio" name="sessionType" id="virtual" value="virtual" required>
+                            <label class="form-check-label text-purple" for="virtual">Virtual</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input text-purple" type="radio" name="sessionType" id="inPerson" value="inPerson" required>
+                            <label class="form-check-label text-purple" for="inPerson">In Person</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3" id="locationField" style="display: none;">
+                    <label for="location" class="form-label text-purple">Location</label>
+                    <input type="text" class="form-control text-purple" id="location" name="location" placeholder="Enter the desired location">
+                </div>
+                <div class="mb-3">
+                    <label for="time" class="form-label text-purple">Preferred Time</label>
+                    <input type="time" class="form-control text-purple" id="time" name="time" required>
+                </div>
+                <input type="hidden" id="selected-date" name="selected_date">
+                <p class="text-muted text-purple">
+                    Please be mindful when scheduling your sessions. We strive to accommodate all requests, but immediate bookings may not always be possible. Your understanding is appreciated.
+                </p>
+                <p class="text-muted text-purple">
+                    Payments are to be made either in cash (preferred) or Paypall directly to the tutor. Base price is $30 an hour, but check packages for other deals.
+                </p>
+                <p class="text-muted text-purple">
+                    Check your email for confirmation and/or any changes.
+                </p>
+                <button type="submit" class="btn btn-primary">Book Now</button>
+            </form>
+        </div>
+    </div>
+    <!-- Booking Section End -->
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- JavaScript to handle form submission and calendar interaction -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            $('#booking-calendar').fullCalendar({
+                selectable: true,
+                selectHelper: true,
+                select: function(start) {
+                    var selectedDate = moment(start).format('YYYY-MM-DD');
+                    document.getElementById('selected-date').value = selectedDate;
+                    document.getElementById('booking-form').style.display = 'block';
+                }
+            });
+
+            document.getElementById('booking-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var form = event.target;
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(function(response) {
+                    if (response.ok) {
+                        alert('Your booking request has been sent successfully!');
+                        form.reset();
+                        form.style.display = 'none';
+                        $('#booking-calendar').fullCalendar('unselect');
+                    } else {
+                        response.json().then(function(data) {
+                            if (Object.hasOwn(data, 'errors')) {
+                                alert(data["errors"].map(error => error["message"]).join(", "));
+                            } else {
+                                alert('There was an error sending your booking request. Please try again.');
+                            }
+                        })
+                    }
+                }).catch(function(error) {
+                    alert('There was an error sending your booking request. Please try again.');
+                });
+            });
+
+            document.getElementById('virtual').addEventListener('change', function() {
+                document.getElementById('locationField').style.display = 'none';
+            });
+            document.getElementById('inPerson').addEventListener('change', function() {
+                document.getElementById('locationField').style.display = 'block';
+            });
+        });
+    </script>
+
+    <!-- Quote Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-7">
+                    <div class="section-title position-relative pb-3 mb-5">
+                        <h5 class="fw-bold text-lighter-purple text-uppercase">Contact us</h5>
+                        <h1 class="mb-0">Have Any Questions? Feel Free to Contact Us</h1>
+                    </div>
+                    <div class="row gx-3">
+                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
+                            <h5 class="mb-4"><i class="fa fa-reply text-purple me-3"></i>Respond within 48 hours</h5>
+                        </div>
+                    </div>
+                    <p class="mb-4">Want to know if a subject not listed is available? Have any questions about pricing? Feel free to use the contact form to the right or check out the <a href="contact.html" style="color:#6610f2">contact</a> section. We look forward to hearing from you.</p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="bg-lighter-purple rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
+                        <form id="contactForm" action="https://formspree.io/f/mvgpoybn" method="POST">
+                            <div class="row g-3">
+                                <div class="col-xl-12">
+                                    <input type="text" class="form-control bg-light border-0" name="name" placeholder="Your Name" style="height: 55px;" required>
+                                </div>
+                                <div class="col-12">
+                                    <input type="email" class="form-control bg-light border-0" name="email" placeholder="Your Email" style="height: 55px;" required>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control bg-light border-0" name="message" rows="3" placeholder="Message" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-light w-100 py-3" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quote End -->
+
+     <!-- Footer Start -->
+     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 pt-5 mb-5">
+                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                        <h3 class="text-light mb-0">Get In Touch</h3>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <i class="bi bi-envelope-open text-primary me-2"></i>
+                        <p class="mb-0">tutoring@pirant.org</p>
+                    </div>
+                    <div class="d-flex mt-4">
+                        <a class="btn btn-primary btn-square me-2" href="https://www.youtube.com/@pirantTutoring" target="_blank"><i class="fab fa-youtube fw-normal"></i></a>
+                        <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                        <div style="margin-left:1rem; margin-top:.5rem;"><form action="https://www.paypal.com/donate" method="post" target="_top">
+                          <input type="hidden" name="business" value="U9Q5GFME78TZQ" />
+                          <input type="hidden" name="no_recurring" value="0" />
+                          <input type="hidden" name="currency_code" value="USD" />
+                          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                          </form>
+                          </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-0 pt-lg-5 mb-5">
+                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                        <h3 class="text-light mb-0">Quick Links</h3>
+                    </div>
+                    <div class="link-animated d-flex flex-column justify-content-start">
+                        <a class="text-light mb-2" href="index.html"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-light mb-2" href="about.html"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                        <a class="text-light mb-2" href="service.html"><i class="bi bi-arrow-right text-primary me-2"></i>Services</a>
+                        <a class="text-light" href="contact.html"><i class="bi bi-arrow-right text-primary me-2"></i>Contact</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                        <h3 class="text-light mb-0">Popular Subjects</h3>
+                    </div>
+                    <div class="link-animated d-flex flex-column justify-content-start">
+                        <a class="text-light mb-2" href="computer.html"><i class="bi bi-arrow-right text-primary me-2"></i>Computer Science</a>
+                        <a class="text-light mb-2" href="math.html"><i class="bi bi-arrow-right text-primary me-2"></i>Math</a>
+                        <a class="text-light mb-2" href="testing.html"><i class="bi bi-arrow-right text-primary me-2"></i>ACT/SAT</a>
+                        <a class="text-light mb-2" href="science.html"><i class="bi bi-arrow-right text-primary me-2"></i>Science</a>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-white" style="background: #061429;">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-8 col-md-6">
+                    <div class="d-flex align-items-center justify-content-left" style="height: 75px;">
+                        <p class="mb-0">&copy; <a class="text-white" href="#">pirant.org</a>. All Rights Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- JavaScript to handle form submission and calendar interaction -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            $('#booking-calendar').fullCalendar({
+                selectable: true,
+                selectHelper: true,
+                select: function(start) {
+                    var selectedDate = moment(start).format('YYYY-MM-DD');
+                    document.getElementById('selected-date').value = selectedDate;
+                    document.getElementById('booking-form').style.display = 'block';
+                }
+            });
+
+            document.getElementById('booking-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var form = event.target;
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(function(response) {
+                    if (response.ok) {
+                        alert('Your booking request has been sent successfully!');
+                        form.reset();
+                        form.style.display = 'none';
+                        $('#booking-calendar').fullCalendar('unselect');
+                    } else {
+                        response.json().then(function(data) {
+                            if (Object.hasOwn(data, 'errors')) {
+                                alert(data["errors"].map(error => error["message"]).join(", "));
+                            } else {
+                                alert('There was an error sending your booking request. Please try again.');
+                            }
+                        })
+                    }
+                }).catch(function(error) {
+                    alert('There was an error sending your booking request. Please try again.');
+                });
+            });
+
+            document.getElementById('virtual').addEventListener('change', function() {
+                document.getElementById('locationField').style.display = 'none';
+            });
+            document.getElementById('inPerson').addEventListener('change', function() {
+                document.getElementById('locationField').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+
+</html>
